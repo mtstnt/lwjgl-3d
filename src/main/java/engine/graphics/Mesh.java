@@ -28,7 +28,7 @@ public class Mesh {
 
     public Mesh() {
         vertexArray = new VertexArray();
-        transform = new Matrix4f().rotate((float) Math.toRadians(30.f), new Vector3f(0, 1, 0));
+        transform = new Matrix4f();
     }
 
     public void setVertices(float[] vertices) {
@@ -61,6 +61,7 @@ public class Mesh {
     public void setIndices(int[] indices) {
         if (this.indices == null) {
             this.indices = new IndexBuffer(indices);
+            System.out.println("Indices new");
         } else {
             this.indices.setIndices(indices);
         }
@@ -69,6 +70,14 @@ public class Mesh {
 
     public void setShader(ShaderProgram shader) {
         this.shaderProgram = shader;
+    }
+
+    public void rotate(float angle, Vector3f up) {
+        this.transform.rotate(angle, up);
+    }
+
+    public void translate(Vector3f v) {
+        this.transform.translate(v);
     }
 
     public void render(Camera camera, int type) {
@@ -83,6 +92,7 @@ public class Mesh {
         if (indices == null) {
            glDrawArrays(type, 0, positions.getCount());
         } else {
+            System.out.println("Draw with indices: " + indices.getCount());
            glDrawElements(type, indices.getCount(), GL_UNSIGNED_INT, 0);
         }
 

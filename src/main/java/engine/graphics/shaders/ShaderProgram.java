@@ -15,8 +15,13 @@ import static org.lwjgl.opengl.GL40.*;
 
 public class ShaderProgram {
     private int programID;
-    private Shader vertexShader;
-    private Shader fragmentShader;
+
+    public static ShaderProgram createDefault() throws Exception {
+        return ShaderProgram.fromPath(
+                "assets/shaders/default/vertex.glsl",
+                "assets/shaders/default/fragment.glsl"
+        );
+    }
 
     public static ShaderProgram fromPath(
             String vertex,
@@ -33,9 +38,6 @@ public class ShaderProgram {
             Shader fragmentShader
     ) throws Exception {
         this.programID = glCreateProgram();
-
-        this.vertexShader = vertexShader;
-        this.fragmentShader = fragmentShader;
 
         glAttachShader(this.programID, vertexShader.getId());
         glAttachShader(this.programID, fragmentShader.getId());

@@ -54,7 +54,11 @@ public class Window {
     }
 
     public void enableDefaultHandlers() {
-        glfwSetWindowSizeCallback(handle, (w, width, height) -> glViewport(0, 0, width, height));
+        glfwSetWindowSizeCallback(handle, (w, width, height) -> {
+            this.width = width;
+            this.height = height;
+            glViewport(0, 0, width, height);
+        });
     }
 
     public void setWidth(int width) {
