@@ -1,5 +1,6 @@
 package engine.window;
 
+import org.joml.Matrix4f;
 import org.joml.Vector2d;
 import org.joml.Vector2f;
 
@@ -14,7 +15,7 @@ public class Window {
 
     private Input inputHandler;
 
-    public Window(int width, int height, String title) throws Exception {
+    public Window(int width, int height, String title) {
         this.width = width;
         this.height = height;
         this.title = title;

@@ -19,7 +19,6 @@ public class IndexBuffer {
         this.ibo = glGenBuffers();
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo);
         glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices, GL_STATIC_DRAW);
-        System.out.println("Indices bound");
     }
 
     public int getCount() {

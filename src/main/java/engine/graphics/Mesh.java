@@ -1,6 +1,7 @@
 package engine.graphics;
 
 import engine.Camera;
+import engine.Utils;
 import engine.graphics.buffers.IndexBuffer;
 import engine.graphics.buffers.VertexArray;
 import engine.graphics.buffers.VertexBuffer;
@@ -8,9 +9,12 @@ import engine.graphics.shaders.Shader;
 import engine.graphics.shaders.ShaderProgram;
 import org.joml.*;
 
+import java.io.FileReader;
 import java.lang.Math;
 import java.nio.Buffer;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 import static org.lwjgl.opengl.GL40.*;
 
@@ -25,6 +29,51 @@ public class Mesh {
     // TODO: Someday pindahin ke class sendiri.
     protected ShaderProgram shaderProgram;
     protected Matrix4f transform;
+
+    public static Mesh fromObj(String path) throws Exception {
+        FileReader fr = new FileReader(path);
+        Scanner scanner = new Scanner(fr);
+
+        ArrayList<Vector3f> vertices = new ArrayList<>();
+        ArrayList<Vector3i> indices = new ArrayList<>();
+
+        while (scanner.hasNextLine()) {
+            String[] words = scanner.nextLine().split(" ");
+
+            if (words[0].equals("#")) {
+                continue;
+            }
+
+            if (words[0].equals("v")) {
+                vertices.add(new Vector3f(
+                    Float.parseFloat(words[1]),
+                    Float.parseFloat(words[2]),
+                    Float.parseFloat(words[3]))
+                );
+            }
+            else if (words[0].equals("f")) {
+                var v = new Vector3i();
+                String[] l;
+
+                l = words[1].split("/");
+                v.x = Integer.parseInt(l[0]) - 1;
+
+                l = words[2].split("/");
+                v.y = Integer.parseInt(l[0]) - 1;
+
+                l = words[3].split("/");
+                v.z = Integer.parseInt(l[0]) - 1;
+
+                indices.add(v);
+            }
+        }
+
+        Mesh mesh = new Mesh();
+        mesh.setVertices(Utils.flatten3f(vertices));
+        mesh.setIndices(Utils.flatten3i(indices));
+
+        return mesh;
+    }
 
     public Mesh() {
         vertexArray = new VertexArray();
@@ -61,7 +110,6 @@ public class Mesh {
     public void setIndices(int[] indices) {
         if (this.indices == null) {
             this.indices = new IndexBuffer(indices);
-            System.out.println("Indices new");
         } else {
             this.indices.setIndices(indices);
         }
@@ -73,11 +121,15 @@ public class Mesh {
     }
 
     public void rotate(float angle, Vector3f up) {
-        this.transform.rotate(angle, up);
+        this.transform.mul(new Matrix4f().rotate(angle, up));
     }
 
     public void translate(Vector3f v) {
-        this.transform.translate(v);
+        this.transform.mul(new Matrix4f().translate(v));
+    }
+
+    public Matrix4f getTransform() {
+        return transform;
     }
 
     public void render(Camera camera, int type) {
@@ -90,10 +142,9 @@ public class Mesh {
         shaderProgram.setUniformVec4f("u_color", new Vector4f(0.0f, 0.0f, 1.0f, 1.0f));
 
         if (indices == null) {
-           glDrawArrays(type, 0, positions.getCount());
+            glDrawArrays(type, 0, positions.getCount());
         } else {
-            System.out.println("Draw with indices: " + indices.getCount());
-           glDrawElements(type, indices.getCount(), GL_UNSIGNED_INT, 0);
+            glDrawElements(type, indices.getCount(), GL_UNSIGNED_INT, 0);
         }
 
         shaderProgram.unbind();

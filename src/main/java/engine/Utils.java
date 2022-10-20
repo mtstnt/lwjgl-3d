@@ -12,13 +12,7 @@ import java.util.Scanner;
 public class Utils {
 
     public static String readFileAsString(String path) throws FileNotFoundException {
-        String result = "";
-        FileReader reader = new FileReader(path);
-        Scanner scanner = new Scanner(reader);
-        while (scanner.hasNextLine()) {
-            result += scanner.nextLine() + "\n";
-        }
-        return result;
+        return new Scanner(new FileReader(path)).useDelimiter("\\A").next();
     }
 
     public static float[] flatten3f(List<Vector3f> s) {
@@ -105,6 +99,26 @@ public class Utils {
         return vertices;
     }
 
+    public static ArrayList<Vector3f> createEllipsoid2(Vector3f position, Vector3f radius) {
+        ArrayList<Vector3f> vertices = new ArrayList<>();
+
+        double pi = Math.PI;
+        double precision = 100;
+
+        for (double u = -pi; u <= pi; u += pi / precision) {
+            for (double v = -pi / 2; v <= pi / 2; v += pi / precision) {
+
+                Vector3f vertex = new Vector3f();
+                vertex.x = (float) (position.x + radius.x * Math.cos(v) * Math.cos(u));
+                vertex.z = (float) (position.y + radius.y * Math.sin(v));
+                vertex.y = (float) (position.z + radius.z * Math.cos(v) * Math.sin(u));
+
+                vertices.add(vertex);
+            }
+        }
+        return vertices;
+    }
+
     public static ArrayList<Vector3f> createEllipsoid(
             Vector3f position,
             Vector3f radius,
@@ -117,7 +131,7 @@ public class Utils {
         var vertices = new ArrayList<Vector3f>();
         double x, y, z;
 
-        for (int i = 0; i <= stackCount; i++) {
+        for (int i = 0; i <= stackCount / 2; i++) {
             double stackAngle = Math.PI / 2 - i * stackStep;
 
             x = radius.x * Math.cos(stackAngle);

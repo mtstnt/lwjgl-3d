@@ -28,34 +28,34 @@ public class MainScene extends Scene {
 //        cone = new Cone(new Vector3f(-8, 0, 0), 10.f, 5.f, ShaderProgram.createDefault());
 //        cyllinder = new Cyllinder(new Vector3f(8, 0, 0), 5.f, 3.f, 1.f, ShaderProgram.createDefault());
         {
-//            var vertices = Utils.createEllipsoid(
+            var vertices = Utils.createEllipsoid(
+                    new Vector3f(0, 0, 0),
+                    new Vector3f(5.f, 5.f, 5.f),
+                    24, 24
+            );
+
+            var indices = Utils.createEllipsoidIndices(24, 24);
+
+            ellipsoid = new Mesh();
+            ellipsoid.setVertices(Utils.flatten3f(vertices));
+            ellipsoid.setIndices(Utils.flatten3i(indices));
+            ellipsoid.setShader(ShaderProgram.createDefault());
+            ellipsoid.translate(new Vector3f(0, 0, -10));
+        }
+        {
+//            var vertices = Utils.createHyperboloidOneSheet(
 //                    new Vector3f(-20, 0, 0),
-//                    new Vector3f(5.f, 5.f, 5.f),
+//                    new Vector3f(5f, 5f, 5f),
 //                    32, 32
 //            );
 //
 //            var indices = Utils.createEllipsoidIndices(32, 32);
 //
-//            ellipsoid = new Mesh();
-//            ellipsoid.setVertices(Utils.flatten3f(vertices));
-//            ellipsoid.setIndices(Utils.flatten3i(indices));
-//            ellipsoid.setShader(ShaderProgram.createDefault());
-//            ellipsoid.translate(new Vector3f(0, 0, -50));
-        }
-        {
-            var vertices = Utils.createHyperboloidOneSheet(
-                    new Vector3f(-20, 0, 0),
-                    new Vector3f(5f, 5f, 5f),
-                    32, 32
-            );
-
-            var indices = Utils.createEllipsoidIndices(32, 32);
-
-            hyperboloid1Sheet = new Mesh();
-            hyperboloid1Sheet.setVertices(Utils.flatten3f(vertices));
-            hyperboloid1Sheet.setIndices(Utils.flatten3i(indices));
-            hyperboloid1Sheet.setShader(ShaderProgram.createDefault());
-            hyperboloid1Sheet.translate(new Vector3f(0, 0, -50));
+//            hyperboloid1Sheet = new Mesh();
+//            hyperboloid1Sheet.setVertices(Utils.flatten3f(vertices));
+//            hyperboloid1Sheet.setIndices(Utils.flatten3i(indices));
+//            hyperboloid1Sheet.setShader(ShaderProgram.createDefault());
+//            hyperboloid1Sheet.translate(new Vector3f(0, 0, -50));
         }
         {
             var vertices = Utils.createEllipticCone(
@@ -95,13 +95,14 @@ public class MainScene extends Scene {
 //
 //        cone.render(camera);
 //        cyllinder.render(camera);
-        hyperboloid1Sheet.rotate((float) Math.toRadians(40.f) * delta, new Vector3f(1, 0, 0));
-        ellipticCone.rotate((float) Math.toRadians(40.f) * delta, new Vector3f(1, 0, 0));
-        ellipticParaboloid.rotate((float) Math.toRadians(40.f) * delta, new Vector3f(1, 0, 0));
+//        hyperboloid1Sheet.rotate((float) Math.toRadians(40.f) * delta, new Vector3f(1, 0, 0));
+//        ellipticCone.rotate((float) Math.toRadians(40.f) * delta, new Vector3f(1, 0, 0));
+//        ellipticParaboloid.rotate((float) Math.toRadians(40.f) * delta, new Vector3f(1, 0, 0));
 
-        hyperboloid1Sheet.render(camera, GL_LINE_STRIP);
-        ellipticCone.render(camera, GL_LINE_STRIP);
-        ellipticParaboloid.render(camera, GL_LINE_STRIP);
+//        hyperboloid1Sheet.render(camera, GL_LINE_STRIP);
+        ellipsoid.render(camera, GL_LINE_STRIP);
+//        ellipticCone.render(camera, GL_LINE_STRIP);
+//        ellipticParaboloid.render(camera, GL_LINE_STRIP);
     }
 
     @Override
