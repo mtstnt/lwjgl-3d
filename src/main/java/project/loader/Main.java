@@ -38,9 +38,7 @@ public class Main extends Scene {
     @Override
     public void update(float delta) {
         mesh.getTransform()
-//            .rotateX((float) Math.toRadians(40) * delta)
             .rotateY((float) Math.toRadians(40) * delta);
-//            .rotateZ((float) Math.toRadians(40) * delta);
 
         mesh.render(camera, GL_TRIANGLE_STRIP);
     }
@@ -55,7 +53,8 @@ public class Main extends Scene {
             Window window = new Window(640, 480, "Testing Window");
             Engine engine = new Engine(window);
             Main mainScene = new Main();
-            engine.run(mainScene);
+            engine.pushScene(mainScene);
+            engine.run();
         }
         catch (IllegalStateException e) {
             System.out.println("OPENGL ERROR:");

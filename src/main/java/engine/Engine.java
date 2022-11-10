@@ -5,21 +5,21 @@ import engine.window.Window;
 import org.lwjgl.glfw.GLFWErrorCallback;
 import org.lwjgl.opengl.GL;
 
+import java.util.Stack;
+
 import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.opengl.GL40.*;
 
 public class Engine {
 
-    private Window window;
-    private Scene scene;
-    private boolean isGLFWInitialized,
-                    isOpenGLInitialized;
+    private final Window window;
+
+    // TODO: Separate this into other class.
+    private Stack<Scene> scenes;
 
     public Engine(Window window) throws Exception {
         this.window = window;
-
-        isGLFWInitialized = false;
-        isOpenGLInitialized = false;
+        this.scenes = new Stack<>();
 
         // Initalize GLFW
         if (! glfwInit()) {
@@ -53,13 +53,24 @@ public class Engine {
         // Set default resize and viewport update.
         window.enableDefaultHandlers();
     }
+
+    public void pushScene(Scene scene) throws Exception {
+        scenes.push(scene);
+        scene.setWindow(window);
+        scene.start();
+    }
+
     public void run(Scene scene) throws Exception {
+        this.pushScene(scene);
+        this.run();
+    }
+
+    public void run() throws Exception {
         long windowHandle = window.getHandle();
         float delta;
         double previousTime = glfwGetTime();
 
-        scene.setWindow(window);
-        scene.start();
+        Scene scene = this.scenes.firstElement();
 
         while (! glfwWindowShouldClose(windowHandle)) {
             // Calculate delta

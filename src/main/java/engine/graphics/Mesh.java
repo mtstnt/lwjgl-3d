@@ -154,37 +154,4 @@ public class Mesh {
     public void render(Camera camera) {
         render(camera, GL_TRIANGLES);
     }
-
-    //    protected ShaderProgram shaderProgram;
-//
-//    public Mesh(VertexBuffer vertexBuffer, IndexBuffer indexBuffer) {
-//        this.vao = glGenVertexArrays();
-//
-//        this.vertexBuffer = vertexBuffer;
-//        this.indexBuffer = indexBuffer;
-//    }
-//
-//    public void render() {
-//        render(GL_TRIANGLES);
-//    }
-//
-//    public void render(int type) {
-//        glBindVertexArray(this.vao);
-//        shaderProgram.bind();
-//        if (indexBuffer == null) {
-//            glDrawArrays(type, 0, vertexBuffer.getCount());
-//        } else {
-//            glDrawElements(type, indexBuffer.getCount(), GL_UNSIGNED_INT, 0);
-//        }
-//        shaderProgram.unbind();
-//        glBindVertexArray(0);
-//    }
-//
-//    public void setShader(ShaderProgram shaderProgram) {
-//        this.shaderProgram = shaderProgram;
-//    }
-//
-//    public ShaderProgram getShader() {
-//        return this.shaderProgram;
-//    }
 }

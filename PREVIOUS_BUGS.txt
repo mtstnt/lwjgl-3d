@@ -1,2 +1,0 @@
-1. Set uniform HARUS PAKAI Matrix4f lek gak, gak kebaca.
-2. Camera defaultnya melihat ke arah Z positif, karena itu mundurin view Znya kurang lebih -5f
