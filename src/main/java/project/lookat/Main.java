@@ -55,7 +55,7 @@ public class Main extends Scene {
 
 //        camera.update();
 
-        mesh.render(camera, GL_TRIANGLES);
+        mesh.render(this, GL_TRIANGLES);
     }
 
     @Override

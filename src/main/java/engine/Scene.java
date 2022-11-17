@@ -13,6 +13,7 @@ public abstract class Scene {
     protected Camera camera;
 
     protected List<GameObject> gameObjects;
+    protected List<LightSource> lightSources;
 
     public Scene() {
         this.gameObjects = new ArrayList<>();
@@ -35,5 +36,9 @@ public abstract class Scene {
 
     public Camera getCamera() {
         return camera;
+    }
+
+    public List<LightSource> getLightSources() {
+        return lightSources;
     }
 }

@@ -6,9 +6,7 @@ import engine.Scene;
 import engine.graphics.Mesh;
 import engine.graphics.shaders.ShaderProgram;
 import engine.window.Window;
-import org.joml.Vector3f;
 
-import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.opengl.GL40.*;
 
 public class Main extends Scene {
@@ -38,9 +36,9 @@ public class Main extends Scene {
     @Override
     public void update(float delta) {
         mesh.getTransform()
-            .rotateY((float) Math.toRadians(40) * delta);
+            .rotateX((float) Math.toRadians(40) * delta);
 
-        mesh.render(camera, GL_TRIANGLE_STRIP);
+        mesh.render(this, GL_TRIANGLE_STRIP);
     }
 
     @Override

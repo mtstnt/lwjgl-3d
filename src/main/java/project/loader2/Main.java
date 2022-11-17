@@ -66,7 +66,7 @@ public class Main extends Scene {
         mesh.getTransform()
                 .rotateLocalY((float) Math.toRadians(40) * delta);
 
-        mesh.render(camera, GL_TRIANGLE_STRIP);
+        mesh.render(this, GL_TRIANGLE_STRIP);
     }
 
     @Override

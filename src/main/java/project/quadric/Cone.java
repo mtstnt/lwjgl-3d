@@ -1,6 +1,7 @@
 package project.quadric;
 
 import engine.Camera;
+import engine.Scene;
 import engine.Utils;
 import engine.graphics.Mesh;
 import engine.graphics.shaders.ShaderProgram;
@@ -33,9 +34,9 @@ public class Cone {
         base.setShader(sp);
     }
 
-    public void render(Camera camera) {
-        cone.render(camera, GL_TRIANGLE_FAN);
-        base.render(camera, GL_TRIANGLE_FAN);
+    public void render(Scene scene) {
+        cone.render(scene, GL_TRIANGLE_FAN);
+        base.render(scene, GL_TRIANGLE_FAN);
     }
 
     public void rotate(float deg, Vector3f up) {

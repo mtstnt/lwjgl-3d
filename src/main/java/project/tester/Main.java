@@ -86,7 +86,7 @@ public class Main extends Scene {
             .rotateY((float) Math.toRadians(40) * delta)
             .rotateZ((float) Math.toRadians(40) * delta);
 
-        mesh.render(camera);
+        mesh.render(this);
     }
 
     @Override

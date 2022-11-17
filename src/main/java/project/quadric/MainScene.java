@@ -100,7 +100,7 @@ public class MainScene extends Scene {
 //        ellipticParaboloid.rotate((float) Math.toRadians(40.f) * delta, new Vector3f(1, 0, 0));
 
 //        hyperboloid1Sheet.render(camera, GL_LINE_STRIP);
-        ellipsoid.render(camera, GL_LINE_STRIP);
+        ellipsoid.render(this, GL_LINE_STRIP);
 //        ellipticCone.render(camera, GL_LINE_STRIP);
 //        ellipticParaboloid.render(camera, GL_LINE_STRIP);
     }

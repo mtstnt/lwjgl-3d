@@ -3,6 +3,7 @@ package engine.graphics.shaders;
 import engine.Utils;
 import org.joml.Matrix4d;
 import org.joml.Matrix4f;
+import org.joml.Vector3f;
 import org.joml.Vector4f;
 import org.lwjgl.system.MemoryStack;
 
@@ -69,6 +70,10 @@ public class ShaderProgram {
         glUniformMatrix4dv(getLocation(name), false, n);
     }
 
+    public void setUniformVec3f(String name, Vector3f val) {
+        glUniform3f(getLocation(name), val.x, val.y, val.z);
+    }
+
     public void setUniformVec4f(String name, Vector4f val) {
         glUniform4f(getLocation(name), val.x, val.y, val.z, val.w);
     }
@@ -76,5 +81,4 @@ public class ShaderProgram {
     private int getLocation(String name) {
         return glGetUniformLocation(this.programID, name);
     }
-
 }

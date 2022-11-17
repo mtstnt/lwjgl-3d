@@ -1,6 +1,7 @@
 package project.quadric;
 
 import engine.Camera;
+import engine.Scene;
 import engine.Utils;
 import engine.graphics.Mesh;
 import engine.graphics.shaders.ShaderProgram;
@@ -53,8 +54,8 @@ public class Cyllinder {
         return vertices;
     }
 
-    public void render(Camera camera) {
-        this.baseMesh.render(camera, GL_TRIANGLE_FAN);
-        this.topMesh.render(camera, GL_TRIANGLE_FAN);
+    public void render(Scene scene) {
+        this.baseMesh.render(scene, GL_TRIANGLE_FAN);
+        this.topMesh.render(scene, GL_TRIANGLE_FAN);
     }
 }

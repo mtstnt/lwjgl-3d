@@ -1,6 +1,8 @@
 package engine.graphics;
 
 import engine.Camera;
+import engine.LightSource;
+import engine.Scene;
 import engine.Utils;
 import engine.graphics.buffers.IndexBuffer;
 import engine.graphics.buffers.VertexArray;
@@ -36,6 +38,7 @@ public class Mesh {
 
         ArrayList<Vector3f> vertices = new ArrayList<>();
         ArrayList<Vector3i> indices = new ArrayList<>();
+        ArrayList<Vector3f> normals = new ArrayList<>();
 
         while (scanner.hasNextLine()) {
             String[] words = scanner.nextLine().split(" ");
@@ -46,12 +49,17 @@ public class Mesh {
 
             if (words[0].equals("v")) {
                 vertices.add(new Vector3f(
-                    Float.parseFloat(words[1]),
-                    Float.parseFloat(words[2]),
-                    Float.parseFloat(words[3]))
+                        Float.parseFloat(words[1]),
+                        Float.parseFloat(words[2]),
+                        Float.parseFloat(words[3]))
                 );
-            }
-            else if (words[0].equals("f")) {
+            } else if (words[0].equals("vn")) {
+                normals.add(new Vector3f(
+                        Float.parseFloat(words[1]),
+                        Float.parseFloat(words[2]),
+                        Float.parseFloat(words[3]))
+                );
+            } else if (words[0].equals("f")) {
                 var v = new Vector3i();
                 String[] l;
 
@@ -71,6 +79,7 @@ public class Mesh {
         Mesh mesh = new Mesh();
         mesh.setVertices(Utils.flatten3f(vertices));
         mesh.setIndices(Utils.flatten3i(indices));
+        mesh.setNormals(Utils.flatten3f(normals));
 
         return mesh;
     }
@@ -132,14 +141,25 @@ public class Mesh {
         return transform;
     }
 
-    public void render(Camera camera, int type) {
+    public void render(Scene scene, int type) {
+        Camera camera = scene.getCamera();
+
         vertexArray.bind();
         shaderProgram.bind();
 
         shaderProgram.setUniformMat4f("u_projection", camera.getProjection());
         shaderProgram.setUniformMat4f("u_view", camera.getView());
         shaderProgram.setUniformMat4f("u_model", transform);
-        shaderProgram.setUniformVec4f("u_color", new Vector4f(0.0f, 0.0f, 1.0f, 1.0f));
+        shaderProgram.setUniformVec4f("u_color", new Vector4f(1.0f, 0.5f, 1.0f, 1.0f));
+
+        List<LightSource> lightSources = scene.getLightSources();
+
+        if (lightSources != null) {
+            for (int i = 0; i < lightSources.size(); i++) {
+                shaderProgram.setUniformVec3f("u_lightSources[" + i + "].position", lightSources.get(i).getPosition());
+                shaderProgram.setUniformVec4f("u_lightSources[" + i + "].color", lightSources.get(i).getColor());
+            }
+        }
 
         if (indices == null) {
             glDrawArrays(type, 0, positions.getCount());
@@ -151,7 +171,7 @@ public class Mesh {
         vertexArray.unbind();
     }
 
-    public void render(Camera camera) {
-        render(camera, GL_TRIANGLES);
+    public void render(Scene scene) {
+        render(scene, GL_TRIANGLES);
     }
 }
