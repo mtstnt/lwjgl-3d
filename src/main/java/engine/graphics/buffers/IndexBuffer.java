@@ -24,4 +24,8 @@ public class IndexBuffer {
     public int getCount() {
         return indices.length;
     }
+
+    public int[] getBuffer() {
+        return this.indices;
+    }
 }

@@ -7,7 +7,7 @@ import org.joml.Vector3f;
 
 public class Camera {
 
-    private Vector3f position;
+    private final Vector3f position;
     private final Vector3f up;
 
     private float yaw, pitch, roll;
@@ -99,5 +99,9 @@ public class Camera {
 
     public Matrix4f getView() {
         return view;
+    }
+
+    public Vector3f getPosition() {
+        return position;
     }
 }

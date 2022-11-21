@@ -12,11 +12,10 @@ public abstract class Scene {
     protected Input input;
     protected Camera camera;
 
-    protected List<GameObject> gameObjects;
     protected List<LightSource> lightSources;
 
     public Scene() {
-        this.gameObjects = new ArrayList<>();
+        this.lightSources = new ArrayList<>();
         this.window = null;
         this.input = null;
     }

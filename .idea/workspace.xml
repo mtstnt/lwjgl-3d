@@ -4,25 +4,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8b8a2f95-8dc8-4adf-8ab2-6c536d553cd2" name="Changes" comment="Rotate camera">
-      <change afterPath="$PROJECT_DIR$/assets/shaders/lighting/fragment.glsl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/shaders/lighting/vertex.glsl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/engine/LightSource.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/project/shading/Main.java" afterDir="false" />
+    <list default="true" id="8b8a2f95-8dc8-4adf-8ab2-6c536d553cd2" name="Changes" comment="Phong shading">
+      <change afterPath="$PROJECT_DIR$/assets/shaders/model/fragment.glsl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/shaders/model/vertex.glsl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/shaders/skybox/fragment.glsl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/shaders/skybox/vertex.glsl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/engine/AssimpLoader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/engine/Skybox.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/engine/Vertex.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/engine/graphics/Material.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/engine/graphics/MeshObject.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/engine/graphics/Model.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/engine/graphics/Texture.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/engine/graphics/buffers/SequentialBuffer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/project/uas/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/shaders/default/vertex.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/assets/shaders/default/vertex.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/engine/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/Camera.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/engine/Scene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/Scene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/engine/game/GameObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/game/GameObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/engine/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/Utils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/engine/graphics/Mesh.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/graphics/Mesh.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/engine/graphics/buffers/IndexBuffer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/graphics/buffers/IndexBuffer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/engine/graphics/shaders/ShaderProgram.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/graphics/shaders/ShaderProgram.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/project/camera/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/camera/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/project/loader/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/loader/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/project/loader2/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/loader2/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/project/lookat/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/lookat/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/project/quadric/Cone.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/quadric/Cone.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/project/quadric/Cyllinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/quadric/Cyllinder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/project/quadric/MainScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/quadric/MainScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/project/tester/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/tester/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/project/loader3/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/loader3/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,26 +58,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/Files/Study/Semester 7/Grafkom/opengl_3d/assets/shaders/lighting",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Files/Study/Semester 7/Grafkom/opengl_3d/assets/shaders/model&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Files\Study\Semester 7\Grafkom\opengl_3d\assets\shaders\model" />
       <recent name="C:\Files\Study\Semester 7\Grafkom\opengl_3d\assets\shaders\lighting" />
       <recent name="C:\Files\Study\Semester 7\Grafkom\opengl_3d\src\main\java\project\shading" />
       <recent name="C:\Files\Study\Semester 7\Grafkom\opengl_3d\src\main\java\project\camera" />
       <recent name="C:\Files\Study\Semester 7\Grafkom\opengl_3d\assets\models" />
-      <recent name="C:\Files\Study\Semester 7\Grafkom\opengl_3d\src\main\java\project\quadric" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Files\Study\Semester 7\Grafkom\opengl_3d\assets\models" />
@@ -88,26 +92,13 @@
       <recent name="project.loader" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.project.shading.Main">
+  <component name="RunManager" selected="Application.project.uas.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="project.loader.Main" />
       <module name="opengl_3d" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="project.loader.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="project.camera.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="project.camera.Main" />
-      <module name="opengl_3d" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="project.camera.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -154,13 +145,26 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="project.uas.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="project.uas.Main" />
+      <module name="opengl_3d" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="project.uas.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.project.uas.Main" />
         <item itemvalue="Application.project.shading.Main" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.project.loader3.Main" />
         <item itemvalue="Application.project.lookat.Main" />
-        <item itemvalue="Application.project.camera.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -201,7 +205,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668054994835</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Phong shading">
+      <created>1668663090856</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1668663090856</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -221,7 +232,8 @@
     <MESSAGE value="Quadric shapes done." />
     <MESSAGE value="Obj file" />
     <MESSAGE value="Rotate camera" />
-    <option name="LAST_COMMIT_MESSAGE" value="Rotate camera" />
+    <MESSAGE value="Phong shading" />
+    <option name="LAST_COMMIT_MESSAGE" value="Phong shading" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

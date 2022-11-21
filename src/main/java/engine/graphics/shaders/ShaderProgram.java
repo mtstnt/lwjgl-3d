@@ -63,6 +63,10 @@ public class ShaderProgram {
         glUniformMatrix4fv(getLocation(name), false, val.get(new float[16]));
     }
 
+    public void setUniformInt(String name, int val) {
+        glUniform1i(getLocation(name), val);
+    }
+
     public void setUniformMat4d(String name, Matrix4d val) {
         System.out.println("Name: " + name + ": " + getLocation(name));
         double[] n = new double[16];

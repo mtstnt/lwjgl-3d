@@ -48,8 +48,6 @@ public class Main extends Scene {
                 ShaderProgram.createDefault());
 
         camera.getView().translate(0, 0, -20);
-
-        this.gameObjects.addAll(List.of(train, ellipsoid1, ellipsoid2));
     }
 
     @Override
@@ -69,9 +67,9 @@ public class Main extends Scene {
                 .getTransform()
                 .rotateLocalY((float) Math.toRadians(30.f) * delta);
 
-        for (GameObject object : this.gameObjects) {
-            object.render(this);
-        }
+        train.render(this);
+        ellipsoid1.render(this);
+        ellipsoid2.render(this);
     }
 
     @Override

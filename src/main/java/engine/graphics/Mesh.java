@@ -7,13 +7,10 @@ import engine.Utils;
 import engine.graphics.buffers.IndexBuffer;
 import engine.graphics.buffers.VertexArray;
 import engine.graphics.buffers.VertexBuffer;
-import engine.graphics.shaders.Shader;
 import engine.graphics.shaders.ShaderProgram;
 import org.joml.*;
 
 import java.io.FileReader;
-import java.lang.Math;
-import java.nio.Buffer;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;

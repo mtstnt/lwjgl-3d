@@ -35,6 +35,18 @@ public class Utils {
         return v;
     }
 
+    public static float[] flattenVertex(List<Vertex> v) {
+        float[] result = new float[(3 + 3 + 2) * v.size()];
+        int idx = 0;
+        for (Vertex vertex : v) {
+            float[] joined = vertex.getJoinedBuffer();
+            System.arraycopy(joined, 0, result, idx, joined.length);
+            idx += joined.length;
+        }
+
+        return result;
+    }
+
     public static ArrayList<Vector3f> createCircle(
             Vector3f center,
             float radius,
