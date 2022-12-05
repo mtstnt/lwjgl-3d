@@ -24,7 +24,6 @@ void main() {
     vec3 lightPosition = u_lightSources[0].position;
 
     vec4 objectColor = texture(u_textureSampler, texCoords);
-//    vec4 objectColor = vec4(0.5, 0.5, 0.0, 1.0);
 
     float ambientStrength = 0.3f;
     vec3 ambient = ambientStrength * lightColor;

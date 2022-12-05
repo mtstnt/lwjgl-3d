@@ -69,11 +69,6 @@ public class Main extends Scene {
         mesh.render(this, GL_TRIANGLE_STRIP);
     }
 
-    @Override
-    public void dispose() {
-
-    }
-
     public static void main(String[] args) {
         try {
             Window window = new Window(640, 480, "Testing Window");

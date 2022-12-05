@@ -104,9 +104,4 @@ public class MainScene extends Scene {
 //        ellipticCone.render(camera, GL_LINE_STRIP);
 //        ellipticParaboloid.render(camera, GL_LINE_STRIP);
     }
-
-    @Override
-    public void dispose() {
-
-    }
 }

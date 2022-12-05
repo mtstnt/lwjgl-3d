@@ -25,7 +25,7 @@ void main() {
 
     vec4 objectColor = texture(u_textureSampler, texCoords);
 
-    float ambientStrength = 0.3f;
+    float ambientStrength = 0.2f;
     vec3 ambient = ambientStrength * lightColor;
 
     vec3 norm = normalize(normal);
@@ -34,7 +34,7 @@ void main() {
     float diffuseStrength = max(dot(normal, lightDir), 0.0f);
     vec3 diffuse = diffuseStrength * lightColor;
 
-    float specularStrength = 0.5;
+    float specularStrength = 0.5f;
     vec3 cameraDir = normalize(cameraPos - fragPos);
     vec3 reflectDir = reflect(-lightDir, norm);
 
@@ -43,6 +43,5 @@ void main() {
 
     vec3 result = (ambient + diffuse + specular) * objectColor.xyz;
 
-    o_color = vec4(result.xyz, 1.0);
-//    o_color = objectColor;
+    o_color = vec4(result, 1.0);
 }

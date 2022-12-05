@@ -76,7 +76,7 @@ public class MeshObject implements Renderable {
         shaderProgram.setUniformMat4f("u_projection", camera.getProjection());
         shaderProgram.setUniformMat4f("u_view", camera.getView());
         shaderProgram.setUniformMat4f("u_model", transform);
-        shaderProgram.setUniformVec4f("u_color", new Vector4f(1.0f, 0.5f, 1.0f, 1.0f));
+        shaderProgram.setUniformVec3f("u_cameraPosition", camera.getPosition());
 
         List<LightSource> lightSources = scene.getLightSources();
 

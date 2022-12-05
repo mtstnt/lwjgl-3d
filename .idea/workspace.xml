@@ -4,27 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8b8a2f95-8dc8-4adf-8ab2-6c536d553cd2" name="Changes" comment="Skybox">
-      <change afterPath="$PROJECT_DIR$/assets/shaders/wall/fragment.glsl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/shaders/wall/vertex.glsl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/engine/graphics/shapes/Plane2D.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/engine/interfaces/Renderable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/project/uas/objects/LightBox.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/project/uas/objects/Room.java" afterDir="false" />
+    <list default="true" id="8b8a2f95-8dc8-4adf-8ab2-6c536d553cd2" name="Changes" comment="Fixed textures and normals for room.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/shaders/lighting/fragment.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/assets/shaders/lighting/fragment.glsl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/shaders/model/fragment.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/assets/shaders/model/fragment.glsl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/shaders/skybox/vertex.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/assets/shaders/skybox/vertex.glsl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/engine/AssimpLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/AssimpLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/engine/Skybox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/Skybox.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/engine/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/Utils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/engine/Vertex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/graphics/buffers/Vertex.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/engine/graphics/Mesh.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/graphics/Mesh.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/shaders/wall/fragment.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/assets/shaders/wall/fragment.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/engine/Scene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/Scene.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/engine/graphics/MeshObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/graphics/MeshObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/engine/graphics/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/graphics/Model.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/engine/graphics/Texture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/graphics/Texture.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/engine/graphics/buffers/SequentialBuffer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/graphics/buffers/SequentialBuffer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/engine/graphics/buffers/VertexBuffer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/graphics/buffers/VertexBuffer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/project/camera/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/camera/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/project/loader/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/loader/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/project/loader2/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/loader2/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/project/loader3/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/loader3/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/project/lookat/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/lookat/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/project/quadric/MainScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/quadric/MainScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/project/shading/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/shading/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/project/tester/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/tester/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/project/uas/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/uas/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -218,7 +211,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669011991975</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Fixed textures and normals for room.">
+      <created>1670226297075</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1670226297075</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -240,7 +240,8 @@
     <MESSAGE value="Rotate camera" />
     <MESSAGE value="Phong shading" />
     <MESSAGE value="Skybox" />
-    <option name="LAST_COMMIT_MESSAGE" value="Skybox" />
+    <MESSAGE value="Fixed textures and normals for room." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed textures and normals for room." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

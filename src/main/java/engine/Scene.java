@@ -22,12 +22,13 @@ public abstract class Scene {
 
     public abstract void start() throws Exception;
     public abstract void update(float delta) throws Exception;
-    public abstract void dispose() throws Exception;
 
     public void setWindow(Window window) {
         this.window = window;
         this.input = window.getInputHandler();
     }
+
+    public void dispose() {}
 
     public void setCamera(Camera camera) {
         this.camera = camera;
