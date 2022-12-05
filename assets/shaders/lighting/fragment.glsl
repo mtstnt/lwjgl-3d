@@ -21,7 +21,7 @@ void main() {
     vec3 lightPosition = u_lightSources[0].position;
     vec3 objectColor = u_color.xyz;
 
-    float ambientStrength = 0.1;
+    float ambientStrength = 0.2;
     vec3 ambient = ambientStrength * lightColor;
 
     vec3 norm = normalize(normal);

@@ -89,13 +89,19 @@ public class Skybox {
             int[] height = new int[1];
             int[] channels = new int[1];
 
+            STBImage.stbi_set_flip_vertically_on_load(false);
             ByteBuffer buffer = STBImage.stbi_load(faces[i], width, height, channels, 0);
 
             if (buffer == null) {
                 throw new Exception("Failed to load image from stbi_load");
             }
 
-            glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + i, 0, GL_RGB, width[0], height[0], 0, GL_RGB, GL_UNSIGNED_BYTE, buffer);
+            int channelCount = GL_RGB;
+            if (channels[0] == 4) {
+                channelCount = GL_RGBA;
+            }
+
+            glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + i, 0, channelCount, width[0], height[0], 0, channelCount, GL_UNSIGNED_BYTE, buffer);
         }
 
         glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
@@ -112,13 +118,13 @@ public class Skybox {
 
     public void render(Scene scene) {
         Camera camera = scene.getCamera();
-
         glDepthMask(false);
         glDepthFunc(GL_LEQUAL);
         shader.bind();
 
         shader.setUniformInt("u_skybox", 0);
         shader.setUniformMat4f("u_projection", camera.getProjection());
+        shader.setUniformMat4f("u_model", new Matrix4f().scale(200.0f, 200.0f, 200.0f));
         // Remove translations
         shader.setUniformMat4f("u_view", new Matrix4f(new Matrix3f(camera.getView())));
 

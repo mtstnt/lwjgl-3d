@@ -1,5 +1,6 @@
 package engine;
 
+import engine.graphics.buffers.Vertex;
 import org.joml.Vector3f;
 import org.joml.Vector3i;
 

@@ -32,11 +32,11 @@ public class VertexBuffer {
         this.vertices = vertices;
     }
 
-    public void bind() {
+    public void bind(int size) {
         if (!this.isBoundAlready) {
             glBindBuffer(GL_ARRAY_BUFFER, vbo);
             glBufferData(GL_ARRAY_BUFFER, vertices, GL_STATIC_DRAW);
-            glVertexAttribPointer(index, 3, GL_FLOAT, false, 0, 0);
+            glVertexAttribPointer(index, size, GL_FLOAT, false, 0, 0);
             glEnableVertexAttribArray(index);
             glBindBuffer(GL_ARRAY_BUFFER, 0);
             this.isBoundAlready = true;
@@ -46,6 +46,10 @@ public class VertexBuffer {
             glBufferSubData(GL_ARRAY_BUFFER, 0, vertices);
             glBindBuffer(GL_ARRAY_BUFFER, 0);
         }
+    }
+
+    public void bind() {
+        this.bind(3);
     }
 
     public int getCount() {

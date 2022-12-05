@@ -8,6 +8,7 @@ import engine.graphics.buffers.IndexBuffer;
 import engine.graphics.buffers.VertexArray;
 import engine.graphics.buffers.VertexBuffer;
 import engine.graphics.shaders.ShaderProgram;
+import engine.interfaces.Renderable;
 import org.joml.*;
 
 import java.io.FileReader;
@@ -17,13 +18,14 @@ import java.util.Scanner;
 
 import static org.lwjgl.opengl.GL40.*;
 
-public class Mesh {
+public class Mesh implements Renderable {
 
     protected final VertexArray vertexArray;
     protected VertexBuffer positions;
     protected VertexBuffer normals;
     protected VertexBuffer texCoords;
     protected IndexBuffer indices;
+    protected Texture texture;
 
     // TODO: Someday pindahin ke class sendiri.
     protected ShaderProgram shaderProgram;
@@ -110,7 +112,7 @@ public class Mesh {
         } else {
             this.texCoords.setVertices(texCoords);
         }
-        vertexArray.use(() -> this.texCoords.bind());
+        vertexArray.use(() -> this.texCoords.bind(2));
     }
 
     public void setIndices(int[] indices) {
@@ -120,6 +122,10 @@ public class Mesh {
             this.indices.setIndices(indices);
         }
         vertexArray.use(() -> this.indices.bind());
+    }
+
+    public void setTexture(Texture texture) {
+        this.texture = texture;
     }
 
     public void setShader(ShaderProgram shader) {
@@ -149,13 +155,19 @@ public class Mesh {
         shaderProgram.setUniformMat4f("u_model", transform);
         shaderProgram.setUniformVec4f("u_color", new Vector4f(1.0f, 0.5f, 1.0f, 1.0f));
 
-        List<LightSource> lightSources = scene.getLightSources();
+        shaderProgram.setUniformVec3f("u_cameraPosition", camera.getPosition());
 
+        List<LightSource> lightSources = scene.getLightSources();
         if (lightSources != null) {
             for (int i = 0; i < lightSources.size(); i++) {
                 shaderProgram.setUniformVec3f("u_lightSources[" + i + "].position", lightSources.get(i).getPosition());
                 shaderProgram.setUniformVec4f("u_lightSources[" + i + "].color", lightSources.get(i).getColor());
             }
+        }
+
+        if (texture != null) {
+            shaderProgram.setUniformInt("u_texture", 0);
+            texture.bindToActiveTexture();
         }
 
         if (indices == null) {

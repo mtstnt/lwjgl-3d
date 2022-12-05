@@ -5,6 +5,7 @@ import engine.graphics.buffers.IndexBuffer;
 import engine.graphics.buffers.SequentialBuffer;
 import engine.graphics.buffers.VertexArray;
 import engine.graphics.shaders.ShaderProgram;
+import engine.interfaces.Renderable;
 import org.joml.Matrix4f;
 import org.joml.Vector4f;
 
@@ -14,7 +15,7 @@ import java.util.List;
 
 import static org.lwjgl.opengl.GL11.*;
 
-public class MeshObject {
+public class MeshObject implements Renderable {
 
     protected final VertexArray vertexArray;
     protected SequentialBuffer vertexBuffer;
@@ -92,4 +93,7 @@ public class MeshObject {
         vertexArray.unbind();
     }
 
+    public Matrix4f getTransform() {
+        return transform;
+    }
 }

@@ -4,29 +4,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8b8a2f95-8dc8-4adf-8ab2-6c536d553cd2" name="Changes" comment="Phong shading">
-      <change afterPath="$PROJECT_DIR$/assets/shaders/model/fragment.glsl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/shaders/model/vertex.glsl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/shaders/skybox/fragment.glsl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/shaders/skybox/vertex.glsl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/engine/AssimpLoader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/engine/Skybox.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/engine/Vertex.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/engine/graphics/Material.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/engine/graphics/MeshObject.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/engine/graphics/Model.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/engine/graphics/Texture.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/engine/graphics/buffers/SequentialBuffer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/project/uas/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+    <list default="true" id="8b8a2f95-8dc8-4adf-8ab2-6c536d553cd2" name="Changes" comment="Skybox">
+      <change afterPath="$PROJECT_DIR$/assets/shaders/wall/fragment.glsl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/shaders/wall/vertex.glsl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/engine/graphics/shapes/Plane2D.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/engine/interfaces/Renderable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/project/uas/objects/LightBox.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/project/uas/objects/Room.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/engine/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/Camera.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/engine/Scene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/Scene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/shaders/lighting/fragment.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/assets/shaders/lighting/fragment.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/shaders/model/fragment.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/assets/shaders/model/fragment.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/shaders/skybox/vertex.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/assets/shaders/skybox/vertex.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/engine/AssimpLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/AssimpLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/engine/Skybox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/Skybox.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/engine/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/Utils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/engine/Vertex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/graphics/buffers/Vertex.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/engine/graphics/Mesh.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/graphics/Mesh.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/engine/graphics/buffers/IndexBuffer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/graphics/buffers/IndexBuffer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/engine/graphics/shaders/ShaderProgram.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/graphics/shaders/ShaderProgram.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/project/loader3/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/loader3/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/engine/graphics/MeshObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/graphics/MeshObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/engine/graphics/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/graphics/Model.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/engine/graphics/Texture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/graphics/Texture.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/engine/graphics/buffers/SequentialBuffer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/graphics/buffers/SequentialBuffer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/engine/graphics/buffers/VertexBuffer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/graphics/buffers/VertexBuffer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/project/uas/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/uas/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,7 +62,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Files/Study/Semester 7/Grafkom/opengl_3d/assets/shaders/model&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Files/Study/Semester 7/Grafkom/opengl_3d/assets/shaders&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
@@ -73,11 +72,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Files\Study\Semester 7\Grafkom\opengl_3d\assets\shaders" />
       <recent name="C:\Files\Study\Semester 7\Grafkom\opengl_3d\assets\shaders\model" />
       <recent name="C:\Files\Study\Semester 7\Grafkom\opengl_3d\assets\shaders\lighting" />
       <recent name="C:\Files\Study\Semester 7\Grafkom\opengl_3d\src\main\java\project\shading" />
       <recent name="C:\Files\Study\Semester 7\Grafkom\opengl_3d\src\main\java\project\camera" />
-      <recent name="C:\Files\Study\Semester 7\Grafkom\opengl_3d\assets\models" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Files\Study\Semester 7\Grafkom\opengl_3d\assets\models" />
@@ -212,7 +211,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668663090856</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Skybox">
+      <created>1669011991975</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1669011991975</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -233,7 +239,8 @@
     <MESSAGE value="Obj file" />
     <MESSAGE value="Rotate camera" />
     <MESSAGE value="Phong shading" />
-    <option name="LAST_COMMIT_MESSAGE" value="Phong shading" />
+    <MESSAGE value="Skybox" />
+    <option name="LAST_COMMIT_MESSAGE" value="Skybox" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

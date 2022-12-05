@@ -2,6 +2,7 @@ package engine;
 
 import engine.graphics.*;
 
+import engine.graphics.buffers.Vertex;
 import engine.graphics.shaders.ShaderProgram;
 import org.joml.Vector2f;
 import org.joml.Vector3f;
@@ -9,12 +10,10 @@ import org.joml.Vector3i;
 import org.joml.Vector4f;
 import org.lwjgl.PointerBuffer;
 import org.lwjgl.assimp.*;
-import org.lwjgl.assimp.Assimp.*;
 
 import java.nio.IntBuffer;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Vector;
 
 public class AssimpLoader {
 
@@ -129,6 +128,8 @@ public class AssimpLoader {
             specular = new Vector4f(colour.r(), colour.g(), colour.b(), colour.a());
         }
 
+        System.out.println("Texture path: " + textureDir + textPath);
+
         Material material = new Material(ambient, diffuse, specular, texture);
         materials.add(material);
     }
@@ -171,6 +172,8 @@ public class AssimpLoader {
                     new Vector3f(aiNormal.x(), aiNormal.y(), aiNormal.z()),
                     new Vector2f(aiTexCoord.x(), aiTexCoord.y())
             ));
+
+            System.out.println(aiTexCoord.x() + " " + aiTexCoord.y());
         }
 
         AIFace.Buffer aiIndices = mesh.mFaces();

@@ -1,53 +1,102 @@
 package project.uas;
 
 import engine.*;
+import engine.graphics.Mesh;
 import engine.graphics.Model;
+import engine.graphics.Texture;
+import engine.graphics.shaders.Shader;
+import engine.graphics.shaders.ShaderProgram;
+import engine.graphics.shapes.Plane2D;
+import engine.interfaces.Renderable;
 import engine.window.Window;
+import org.joml.Matrix4f;
 import org.joml.Vector2d;
 import org.joml.Vector3f;
 import org.joml.Vector4f;
 import org.lwjgl.glfw.GLFW;
+import project.uas.objects.LightBox;
+import project.uas.objects.Room;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.lwjgl.assimp.Assimp.*;
+import static org.lwjgl.opengl.GL20.GL_FRAGMENT_SHADER;
+import static org.lwjgl.opengl.GL20.GL_VERTEX_SHADER;
 
 public class Main extends Scene {
-    private Model model;
     private Skybox skybox;
     private boolean isActive = true;
 
+    private List<Renderable> renderObjects;
+
     @Override
     public void start() throws Exception {
+        renderObjects = new ArrayList<>();
+
         camera = Camera.createPerspective(
                 (float) Math.toRadians(45.f),
                 640.f / 480.f,
                 0.01f,
-                100.f
+                10000.f
         );
 
-        camera.move(new Vector3f(0, 0, 5));
 
-        model = AssimpLoader.loadModel(
-                "assets/models/jug_01_2k/jug_01_2k.obj",
-                "assets/models/jug_01_2k",
+        camera.move(new Vector3f(0, 2, 0));
+
+        Model jug = AssimpLoader.loadModel(
+                "assets/models/jug_01_2k_triangulated/jug_01_2k.mtl.obj",
+                "assets/models/jug_01_2k_triangulated/",
                 aiProcess_Triangulate | aiProcess_GenSmoothNormals | aiProcess_FixInfacingNormals
         );
+        Model sofa = AssimpLoader.loadModel(
+                "assets/models/sofa_01_2k/sofa_01_2k.obj",
+                "assets/models/sofa_01_2k/",
+                aiProcess_Triangulate | aiProcess_GenSmoothNormals | aiProcess_FixInfacingNormals
+        );
+        sofa.mulTransform(
+                new Matrix4f()
+                        .translate(2.f, 0.f, 0.f)
+        );
+        Model bed = AssimpLoader.loadModel(
+                "assets/models/GothicBed_01_2k/GothicBed_01_2k.obj",
+                "assets/models/GothicBed_01_2k/",
+                aiProcess_Triangulate | aiProcess_GenSmoothNormals | aiProcess_FixInfacingNormals
+        );
+        bed.mulTransform(
+                new Matrix4f()
+                        .translate(2.f, 0.f, 2.f)
+                        .rotateY((float) Math.toRadians(270.f))
+        );
+//
+        LightBox light = new LightBox();
+        light.getTransform()
+                .translate(0, 2.8f, 0)
+                .scale(0.1f);
 
-
-        this.lightSources.add(
+        lightSources.add(
                 new LightSource(
-                        new Vector3f(0.f, 5.f, 5.f),
+                        new Vector3f(0, 5, 0),
                         new Vector4f(1.0f, 1.0f, 1.0f, 1.0f)
                 )
         );
 
-        this.skybox = new Skybox(new String[]{
-                "assets/skybox/yokohama/posx.jpg",
-                "assets/skybox/yokohama/negx.jpg",
-                "assets/skybox/yokohama/posy.jpg",
-                "assets/skybox/yokohama/negy.jpg",
-                "assets/skybox/yokohama/posz.jpg",
-                "assets/skybox/yokohama/negz.jpg",
+        skybox = new Skybox(new String[]{
+                "assets/skybox/sky/posx.png",
+                "assets/skybox/sky/negx.png",
+                "assets/skybox/sky/posy.png",
+                "assets/skybox/sky/negy.png",
+                "assets/skybox/sky/posz.png",
+                "assets/skybox/sky/negz.png",
         });
+
+        Room room = new Room(new Vector3f(0, 0, 0), 3.f, 3.f, 3f);
+
+        renderObjects.add(room);
+        renderObjects.add(jug);
+        renderObjects.add(sofa);
+        renderObjects.add(light);
+        renderObjects.add(bed);
 
         input.setCursorMode(GLFW.GLFW_CURSOR_DISABLED);
 
@@ -93,7 +142,7 @@ public class Main extends Scene {
 
         camera.update();
 
-        model.render(this);
+        renderObjects.forEach(obj -> obj.render(this));
 
         skybox.render(this);
     }
@@ -105,7 +154,7 @@ public class Main extends Scene {
 
     public static void main(String[] args) {
         try {
-            Window window = new Window(640, 480, "Testing Window");
+            Window window = new Window(1280, 720, "Testing Window");
             Engine engine = new Engine(window);
             Main mainScene = new Main();
             engine.pushScene(mainScene);

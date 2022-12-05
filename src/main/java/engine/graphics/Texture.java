@@ -35,18 +35,27 @@ public class Texture {
         }
 
         glTexImage2D(GL_TEXTURE_2D, 0, channelEnum, width, height, 0, channelEnum, GL_UNSIGNED_BYTE, buffer);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+
         glGenerateMipmap(GL_TEXTURE_2D);
 
         glBindTexture(GL_TEXTURE_2D, 0);
     }
 
     public static Texture loadFromFile(String filepath) throws Exception {
+        return loadFromFile(filepath, true);
+    }
+
+    public static Texture loadFromFile(String filepath, boolean shouldFlip) throws Exception {
         int[] width = new int[1];
         int[] height = new int[1];
         int[] channels = new int[1];
 
+        STBImage.stbi_set_flip_vertically_on_load(shouldFlip);
         ByteBuffer buffer = STBImage.stbi_load(filepath, width, height, channels, 0);
 
         if (buffer == null) {
