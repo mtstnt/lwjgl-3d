@@ -53,7 +53,7 @@ public class Main extends Scene {
         Model bed = Model.load("assets/models/GothicBed_01_2k/GothicBed_01_2k.obj");
         bed.mulTransform(
                 new Matrix4f()
-                        .translate(0.9f, 0.f, 1.3f)
+                        .translate(0.9f, 0.f, 1.2f)
                         .rotateY((float) Math.toRadians(270.f))
         );
         renderObjects.add(bed);
@@ -81,13 +81,13 @@ public class Main extends Scene {
 
         Model wardrobe = Model.load("assets/models/old_wardrobe/old_wardrobe.obj");
         wardrobe.mulTransform(new Matrix4f()
-            .translate(1.5f, 0, -1.6f)
+            .translate(1.45f, 0, -1.6f)
             .rotateY((float) Math.toRadians(90.f)));
         renderObjects.add(wardrobe);
 
         Model ac = Model.load("assets/models/air_conditioner/air_conditioner.obj");
         ac.mulTransform(new Matrix4f()
-            .translate(0.0f, 2f, 1.8f)
+            .translate(0.0f, 2f, 1.78f)
             .rotateY((float) Math.toRadians(180f)));
         renderObjects.add(ac);
 
@@ -177,7 +177,7 @@ public class Main extends Scene {
 
     public static void main(String[] args) {
         try {
-            Window window = new Window(1280, 720, "Testing Window");
+            Window window = new Window(1920, 1080, "Testing Window");
             Engine engine = new Engine(window);
             Main mainScene = new Main();
             engine.pushScene(mainScene);

@@ -4,33 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8b8a2f95-8dc8-4adf-8ab2-6c536d553cd2" name="Changes" comment="Fixed specular in models">
-      <change afterPath="$PROJECT_DIR$/assets/shaders/model_shadow/fragment.glsl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/shaders/model_shadow/vertex.glsl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/shaders/shadow/fragment.glsl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/shaders/shadow/geometry.glsl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/shaders/shadow/vertex.glsl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/shaders/wall_reflective/fragment.glsl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/shaders/wall_reflective/vertex.glsl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/textures/blending_transparent_window.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/engine/graphics/ShadowMap.java" afterDir="false" />
+    <list default="true" id="8b8a2f95-8dc8-4adf-8ab2-6c536d553cd2" name="Changes" comment="Adding more models">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/shaders/lighting/fragment.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/assets/shaders/lighting/fragment.glsl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/shaders/wall/fragment.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/assets/shaders/wall/fragment.glsl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/engine/AssimpLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/AssimpLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/engine/Scene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/Scene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/engine/Skybox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/Skybox.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/engine/graphics/Mesh.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/graphics/Mesh.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/engine/graphics/MeshObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/graphics/MeshObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/engine/graphics/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/graphics/Model.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/engine/graphics/Texture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/graphics/Texture.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/engine/graphics/shaders/ShaderProgram.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/graphics/shaders/ShaderProgram.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/engine/graphics/shapes/Plane2D.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/engine/interfaces/Renderable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/interfaces/Renderable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/project/tester/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/tester/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/project/uas/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/uas/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/project/uas/objects/LightBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/uas/objects/LightBox.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/project/uas/objects/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/uas/objects/Room.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -237,7 +213,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670228099784</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Adding more models">
+      <created>1670337015417</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1670337015417</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -252,6 +235,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <MESSAGE value="3D done yessss" />
     <MESSAGE value="quadric done" />
     <MESSAGE value="Quadric shapes done." />
@@ -261,7 +245,8 @@
     <MESSAGE value="Skybox" />
     <MESSAGE value="Fixed textures and normals for room." />
     <MESSAGE value="Fixed specular in models" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed specular in models" />
+    <MESSAGE value="Adding more models" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding more models" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
