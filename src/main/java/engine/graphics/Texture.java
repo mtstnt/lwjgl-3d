@@ -22,7 +22,7 @@ public class Texture {
         glBindTexture(GL_TEXTURE_2D, this.textureID);
     }
 
-    public void setup(ByteBuffer buffer, int width, int height, int channels) {
+    public void setup(ByteBuffer buffer, int width, int height, int channels, int wrapMode) {
         glBindTexture(GL_TEXTURE_2D, this.textureID);
 
         glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
@@ -47,10 +47,10 @@ public class Texture {
     }
 
     public static Texture loadFromFile(String filepath) throws Exception {
-        return loadFromFile(filepath, true);
+        return loadFromFile(filepath, true, GL_REPEAT);
     }
 
-    public static Texture loadFromFile(String filepath, boolean shouldFlip) throws Exception {
+    public static Texture loadFromFile(String filepath, boolean shouldFlip, int wrapMode) throws Exception {
         int[] width = new int[1];
         int[] height = new int[1];
         int[] channels = new int[1];
@@ -63,11 +63,15 @@ public class Texture {
         }
 
         Texture texture = new Texture();
-        texture.setup(buffer, width[0], height[0], channels[0]);
+        texture.setup(buffer, width[0], height[0], channels[0], wrapMode);
 
         STBImage.stbi_image_free(buffer);
 
         return texture;
+    }
+
+    public static Texture loadFromFile(String filepath, boolean shouldFlip) throws Exception {
+        return loadFromFile(filepath, true, GL_REPEAT);
     }
 
 }

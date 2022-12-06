@@ -1,6 +1,7 @@
 package engine;
 
 import engine.game.GameObject;
+import engine.interfaces.Renderable;
 import engine.window.Input;
 import engine.window.Window;
 
@@ -36,6 +37,10 @@ public abstract class Scene {
 
     public Camera getCamera() {
         return camera;
+    }
+
+    public Window getWindow() {
+        return window;
     }
 
     public List<LightSource> getLightSources() {

@@ -154,8 +154,11 @@ public class Mesh implements Renderable {
         shaderProgram.setUniformMat4f("u_view", camera.getView());
         shaderProgram.setUniformMat4f("u_model", transform);
         shaderProgram.setUniformVec4f("u_color", new Vector4f(1.0f, 0.5f, 1.0f, 1.0f));
-
         shaderProgram.setUniformVec3f("u_cameraPosition", camera.getPosition());
+
+        shaderProgram.setUniformInt("u_depthMapSampler", 1);
+        shaderProgram.setUniformInt("u_skyboxSampler", 2);
+        shaderProgram.setUniformFloat("u_farPlane", ShadowMap.FAR_PLANE);
 
         List<LightSource> lightSources = scene.getLightSources();
         if (lightSources != null) {
@@ -182,5 +185,45 @@ public class Mesh implements Renderable {
 
     public void render(Scene scene) {
         render(scene, GL_TRIANGLES);
+    }
+
+    @Override
+    public void render(Scene scene, ShaderProgram customShader) {
+        Camera camera = scene.getCamera();
+
+        vertexArray.bind();
+        customShader.bind();
+
+        customShader.setUniformMat4f("u_projection", camera.getProjection());
+        customShader.setUniformMat4f("u_view", camera.getView());
+        customShader.setUniformMat4f("u_model", transform);
+        customShader.setUniformVec4f("u_color", new Vector4f(1.0f, 0.5f, 1.0f, 1.0f));
+        customShader.setUniformVec3f("u_cameraPosition", camera.getPosition());
+
+        customShader.setUniformInt("u_depthMapSampler", 1);
+        customShader.setUniformInt("u_skyboxSampler", 2);
+        customShader.setUniformFloat("u_farPlane", ShadowMap.FAR_PLANE);
+
+        List<LightSource> lightSources = scene.getLightSources();
+        if (lightSources != null) {
+            for (int i = 0; i < lightSources.size(); i++) {
+                customShader.setUniformVec3f("u_lightSources[" + i + "].position", lightSources.get(i).getPosition());
+                customShader.setUniformVec4f("u_lightSources[" + i + "].color", lightSources.get(i).getColor());
+            }
+        }
+
+        if (texture != null) {
+            customShader.setUniformInt("u_textureSampler", 0);
+            texture.bindToActiveTexture();
+        }
+
+        if (indices == null) {
+            glDrawArrays(GL_TRIANGLES, 0, positions.getCount());
+        } else {
+            glDrawElements(GL_TRIANGLES, indices.getCount(), GL_UNSIGNED_INT, 0);
+        }
+
+        shaderProgram.unbind();
+        vertexArray.unbind();
     }
 }

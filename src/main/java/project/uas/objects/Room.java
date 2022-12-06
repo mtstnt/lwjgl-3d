@@ -3,11 +3,12 @@ package project.uas.objects;
 import engine.Scene;
 import engine.graphics.Mesh;
 import engine.graphics.Texture;
+import engine.graphics.shaders.Shader;
 import engine.graphics.shaders.ShaderProgram;
-import engine.graphics.shapes.Plane2D;
 import engine.interfaces.Renderable;
-import org.joml.Vector2f;
 import org.joml.Vector3f;
+
+import static org.lwjgl.opengl.GL40.*;
 
 public class Room implements Renderable {
 
@@ -65,10 +66,10 @@ public class Room implements Renderable {
                     -width, height, depth
             });
             wallYPos.setNormals(new float[] {
-                    0, 1, 0,
-                    0, 1, 0,
-                    0, 1, 0,
-                    0, 1, 0
+                    0, -1, 0,
+                    0, -1, 0,
+                    0, -1, 0,
+                    0, -1, 0
             });
             wallYPos.setIndices(INDICES);
             wallYPos.setTexCoords(TEXCOORD);
@@ -166,5 +167,15 @@ public class Room implements Renderable {
         wallZPos.render(scene);
         wallXNeg.render(scene);
         wallXPos.render(scene);
+    }
+
+    @Override
+    public void render(Scene scene, ShaderProgram customShader) {
+        wallYNeg.render(scene, customShader);
+        wallYPos.render(scene, customShader);
+        wallZNeg.render(scene, customShader);
+        wallZPos.render(scene, customShader);
+        wallXNeg.render(scene, customShader);
+        wallXPos.render(scene, customShader);
     }
 }

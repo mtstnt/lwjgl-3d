@@ -4,21 +4,33 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8b8a2f95-8dc8-4adf-8ab2-6c536d553cd2" name="Changes" comment="Fixed textures and normals for room.">
+    <list default="true" id="8b8a2f95-8dc8-4adf-8ab2-6c536d553cd2" name="Changes" comment="Fixed specular in models">
+      <change afterPath="$PROJECT_DIR$/assets/shaders/model_shadow/fragment.glsl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/shaders/model_shadow/vertex.glsl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/shaders/shadow/fragment.glsl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/shaders/shadow/geometry.glsl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/shaders/shadow/vertex.glsl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/shaders/wall_reflective/fragment.glsl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/shaders/wall_reflective/vertex.glsl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/textures/blending_transparent_window.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/engine/graphics/ShadowMap.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/shaders/model/fragment.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/assets/shaders/model/fragment.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/shaders/lighting/fragment.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/assets/shaders/lighting/fragment.glsl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/shaders/wall/fragment.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/assets/shaders/wall/fragment.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/engine/AssimpLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/AssimpLoader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/engine/Scene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/Scene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/engine/Skybox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/Skybox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/engine/graphics/Mesh.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/graphics/Mesh.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/engine/graphics/MeshObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/graphics/MeshObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/project/camera/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/camera/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/project/loader/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/loader/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/project/loader2/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/loader2/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/project/loader3/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/loader3/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/project/lookat/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/lookat/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/project/quadric/MainScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/quadric/MainScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/project/shading/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/shading/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/engine/graphics/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/graphics/Model.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/engine/graphics/Texture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/graphics/Texture.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/engine/graphics/shaders/ShaderProgram.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/graphics/shaders/ShaderProgram.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/engine/graphics/shapes/Plane2D.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/engine/interfaces/Renderable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/interfaces/Renderable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/project/tester/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/tester/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/project/uas/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/uas/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/project/uas/objects/LightBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/uas/objects/LightBox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/project/uas/objects/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/uas/objects/Room.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,26 +62,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Files/Study/Semester 7/Grafkom/opengl_3d/assets/shaders&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "last_opened_file_path": "C:/Files/Study/Semester 7/Grafkom/opengl_3d/assets/textures",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Files\Study\Semester 7\Grafkom\opengl_3d\assets\textures" />
       <recent name="C:\Files\Study\Semester 7\Grafkom\opengl_3d\assets\shaders" />
+      <recent name="C:\Files\Study\Semester 7\Grafkom\opengl_3d\assets\shaders\shadow" />
       <recent name="C:\Files\Study\Semester 7\Grafkom\opengl_3d\assets\shaders\model" />
       <recent name="C:\Files\Study\Semester 7\Grafkom\opengl_3d\assets\shaders\lighting" />
-      <recent name="C:\Files\Study\Semester 7\Grafkom\opengl_3d\src\main\java\project\shading" />
-      <recent name="C:\Files\Study\Semester 7\Grafkom\opengl_3d\src\main\java\project\camera" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Files\Study\Semester 7\Grafkom\opengl_3d\assets\models" />
@@ -98,12 +110,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="project.loader3.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="project.loader3.Main" />
+    <configuration name="mainx" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="project.mainx" />
       <module name="opengl_3d" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="project.loader3.*" />
+          <option name="PATTERN" value="project.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -111,12 +123,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="project.lookat.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="project.lookat.Main" />
+    <configuration name="project.loader3.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="project.loader3.Main" />
       <module name="opengl_3d" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="project.lookat.*" />
+          <option name="PATTERN" value="project.loader3.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -153,10 +165,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.project.uas.Main" />
+        <item itemvalue="Application.mainx" />
         <item itemvalue="Application.project.shading.Main" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.project.loader3.Main" />
-        <item itemvalue="Application.project.lookat.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -218,7 +230,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670226297075</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Fixed specular in models">
+      <created>1670228099784</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1670228099784</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -241,7 +260,8 @@
     <MESSAGE value="Phong shading" />
     <MESSAGE value="Skybox" />
     <MESSAGE value="Fixed textures and normals for room." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed textures and normals for room." />
+    <MESSAGE value="Fixed specular in models" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed specular in models" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

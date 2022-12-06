@@ -1,8 +1,9 @@
 package engine.interfaces;
 
 import engine.Scene;
-import org.joml.Matrix4f;
+import engine.graphics.shaders.ShaderProgram;
 
 public interface Renderable {
     void render(Scene scene);
+    void render(Scene scene, ShaderProgram customShader);
 }

@@ -70,7 +70,6 @@ public class Skybox {
     };
 
     public Skybox(String[] faces) throws Exception {
-
         vao = new VertexArray();
         vao.bind();
 
@@ -78,6 +77,7 @@ public class Skybox {
         vbo.bind();
 
         textureID = glGenTextures();
+        glActiveTexture(GL_TEXTURE2);
         glBindTexture(GL_TEXTURE_CUBE_MAP, textureID);
 
         if (faces.length != FACE_COUNT) {
@@ -114,6 +114,7 @@ public class Skybox {
                 new Shader(SKYBOX_VERTEX_SHADER_PATH, GL_VERTEX_SHADER),
                 new Shader(SKYBOX_FRAGMENT_SHADER_PATH, GL_FRAGMENT_SHADER)
         );
+        glActiveTexture(GL_TEXTURE0);
     }
 
     public void render(Scene scene) {
@@ -122,13 +123,14 @@ public class Skybox {
         glDepthFunc(GL_LEQUAL);
         shader.bind();
 
-        shader.setUniformInt("u_skybox", 0);
+        shader.setUniformInt("u_skybox", 2);
         shader.setUniformMat4f("u_projection", camera.getProjection());
         shader.setUniformMat4f("u_model", new Matrix4f().scale(200.0f, 200.0f, 200.0f));
         // Remove translations
         shader.setUniformMat4f("u_view", new Matrix4f(new Matrix3f(camera.getView())));
 
         vao.bind();
+
         glBindTexture(GL_TEXTURE_CUBE_MAP, textureID);
         glDrawArrays(GL_TRIANGLES, 0, 36);
         glDepthFunc(GL_LESS);

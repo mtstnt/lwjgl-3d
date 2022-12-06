@@ -24,8 +24,6 @@ public class Main extends Scene {
                 0.01f,
                 100.f
         );
-//        System.out.println("Projection dari main: " + this.camera.getProjection().toString());
-
         input.handleButtonEvent(GLFW_MOUSE_BUTTON_LEFT, GLFW_PRESS, () -> System.out.println("Mouse left is pressed"));
         input.handleButtonEvent(GLFW_MOUSE_BUTTON_RIGHT, GLFW_PRESS, () -> System.out.println("Mouse right is pressed"));
         input.handleKeyEvent(GLFW_KEY_A, GLFW_PRESS, () -> mesh.getTransform().translate(new Vector3f(1, 0, 0)));

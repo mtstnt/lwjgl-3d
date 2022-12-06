@@ -58,6 +58,11 @@ public class LightBox implements Renderable {
         light.render(scene);
     }
 
+    @Override
+    public void render(Scene scene, ShaderProgram customShader) {
+        throw new UnsupportedOperationException();
+    }
+
     public Matrix4f getTransform() {
         return light.getTransform();
     }

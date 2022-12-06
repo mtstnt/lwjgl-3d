@@ -61,6 +61,7 @@ public class AssimpLoader {
     }
 
     public static Model loadModel(String filepath, String texturesDir, int flags) throws Exception {
+        System.out.println("Loading " + filepath);
         AssimpLoader assimpLoader = new AssimpLoader();
         List<MeshObject> meshObjects = assimpLoader.load(filepath, texturesDir, flags);
         return new Model(meshObjects);
@@ -80,8 +81,8 @@ public class AssimpLoader {
             MeshObject mesh = processMesh(aiMesh);
             mesh.setShaderProgram(
                     ShaderProgram.fromPath(
-                            "assets/shaders/model/vertex.glsl",
-                            "assets/shaders/model/fragment.glsl"
+                            "assets/shaders/model_shadow/vertex.glsl",
+                            "assets/shaders/model_shadow/fragment.glsl"
                     )
             );
             meshes.add(mesh);
@@ -159,12 +160,16 @@ public class AssimpLoader {
         AIVector3D.Buffer aiTexCoords = mesh.mTextureCoords(0);
 
         assert aiNormals != null;
-        assert aiTexCoords != null;
 
         while (aiVertices.remaining() > 0 && aiNormals.remaining() > 0) {
-            if (!(aiTexCoords.remaining() > 0)) break;
             AIVector3D aiVertex = aiVertices.get();
             AIVector3D aiNormal = aiNormals.get();
+
+            assert aiTexCoords != null;
+            System.out.println(aiTexCoords.remaining());
+            if (aiTexCoords.remaining() == 0) {
+                break;
+            }
             AIVector3D aiTexCoord = aiTexCoords.get();
 
             vertices.add(new Vertex(
@@ -172,8 +177,6 @@ public class AssimpLoader {
                     new Vector3f(aiNormal.x(), aiNormal.y(), aiNormal.z()),
                     new Vector2f(aiTexCoord.x(), aiTexCoord.y())
             ));
-
-            System.out.println(aiTexCoord.x() + " " + aiTexCoord.y());
         }
 
         AIFace.Buffer aiIndices = mesh.mFaces();

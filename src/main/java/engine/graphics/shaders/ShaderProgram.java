@@ -36,6 +36,25 @@ public class ShaderProgram {
 
     public ShaderProgram(
             Shader vertexShader,
+            Shader fragmentShader,
+            Shader geometryShader
+    ) throws Exception {
+        this.programID = glCreateProgram();
+
+        glAttachShader(this.programID, vertexShader.getId());
+        glAttachShader(this.programID, fragmentShader.getId());
+        glAttachShader(this.programID, geometryShader.getId());
+
+        glLinkProgram(this.programID);
+
+        if (0 == glGetProgrami(this.programID, GL_LINK_STATUS)) {
+            String log = glGetProgramInfoLog(this.programID);
+            throw new Exception("Error linking program: " + log);
+        }
+    }
+
+    public ShaderProgram(
+            Shader vertexShader,
             Shader fragmentShader
     ) throws Exception {
         this.programID = glCreateProgram();
@@ -62,22 +81,15 @@ public class ShaderProgram {
     public void setUniformMat4f(String name, Matrix4f val) {
         glUniformMatrix4fv(getLocation(name), false, val.get(new float[16]));
     }
-
     public void setUniformInt(String name, int val) {
         glUniform1i(getLocation(name), val);
     }
-
-    public void setUniformMat4d(String name, Matrix4d val) {
-        System.out.println("Name: " + name + ": " + getLocation(name));
-        double[] n = new double[16];
-        n = val.get(n);
-        glUniformMatrix4dv(getLocation(name), false, n);
+    public void setUniformFloat(String name, float val) {
+        glUniform1f(getLocation(name), val);
     }
-
     public void setUniformVec3f(String name, Vector3f val) {
         glUniform3f(getLocation(name), val.x, val.y, val.z);
     }
-
     public void setUniformVec4f(String name, Vector4f val) {
         glUniform4f(getLocation(name), val.x, val.y, val.z, val.w);
     }

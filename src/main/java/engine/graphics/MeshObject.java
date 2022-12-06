@@ -59,37 +59,41 @@ public class MeshObject implements Renderable {
         });
     }
 
-    public void debug() {
-        System.out.println(Arrays.toString(vertexBuffer.getBuffer()));
-        System.out.println(Arrays.toString(indexBuffer.getBuffer()));
+    public void render(Scene scene) {
+        render(scene, shaderProgram);
     }
 
-    public void render(Scene scene) {
+    @Override
+    public void render(Scene scene, ShaderProgram customShader) {
         Camera camera = scene.getCamera();
 
         vertexArray.bind();
-        shaderProgram.bind();
+        customShader.bind();
 
         // TODO: Bind texture OR material.
-        material.bindToShader(shaderProgram);
+        material.bindToShader(customShader);
 
-        shaderProgram.setUniformMat4f("u_projection", camera.getProjection());
-        shaderProgram.setUniformMat4f("u_view", camera.getView());
-        shaderProgram.setUniformMat4f("u_model", transform);
-        shaderProgram.setUniformVec3f("u_cameraPosition", camera.getPosition());
+        customShader.setUniformMat4f("u_projection", camera.getProjection());
+        customShader.setUniformMat4f("u_view", camera.getView());
+        customShader.setUniformMat4f("u_model", transform);
+        customShader.setUniformVec3f("u_cameraPosition", camera.getPosition());
+
+        // Shadow sampler
+        customShader.setUniformInt("u_depthMapSampler", 1);
+        customShader.setUniformFloat("u_farPlane", ShadowMap.FAR_PLANE);
 
         List<LightSource> lightSources = scene.getLightSources();
 
         if (lightSources != null) {
             for (int i = 0; i < lightSources.size(); i++) {
-                shaderProgram.setUniformVec3f("u_lightSources[" + i + "].position", lightSources.get(i).getPosition());
-                shaderProgram.setUniformVec4f("u_lightSources[" + i + "].color", lightSources.get(i).getColor());
+                customShader.setUniformVec3f("u_lightSources[" + i + "].position", lightSources.get(i).getPosition());
+                customShader.setUniformVec4f("u_lightSources[" + i + "].color", lightSources.get(i).getColor());
             }
         }
 
         glDrawElements(GL_TRIANGLES, indexBuffer.getCount(), GL_UNSIGNED_INT, 0);
 
-        shaderProgram.unbind();
+        customShader.unbind();
         vertexArray.unbind();
     }
 
