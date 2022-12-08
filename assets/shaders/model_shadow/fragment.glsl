@@ -21,7 +21,7 @@ in vec2 texCoords;
 
 out vec4 o_color;
 
-vec3 gridSamplingDisk[20] = vec3[] (
+vec3 samplingOffsets[20] = vec3[] (
     vec3(1, 1,  1), vec3( 1, -1,  1), vec3(-1, -1,  1), vec3(-1, 1,  1),
     vec3(1, 1, -1), vec3( 1, -1, -1), vec3(-1, -1, -1), vec3(-1, 1, -1),
     vec3(1, 1,  0), vec3( 1, -1,  0), vec3(-1, -1,  0), vec3(-1, 1,  0),
@@ -29,22 +29,51 @@ vec3 gridSamplingDisk[20] = vec3[] (
     vec3(0, 1,  1), vec3( 0, -1,  1), vec3( 0, -1, -1), vec3( 0, 1, -1)
 );
 
-float shadowCalc(vec3 _fragPos) {
+// Rumus ga pake sampling untuk dptkan value shadow.
+float shadowCalcWithoutSampling(vec3 _fragPos)
+{
+    // Cari distance dari fragPos ke light dan distance vector itu di shadow depth map.
+    // Kalau value dari shadow depth map < distance fragPos ke light berarti shadow.
     vec3 fragToLight = _fragPos - u_lightSources[0].position;
+    float closestDepth = texture(u_depthMapSampler, fragToLight).r;
+    closestDepth *= u_farPlane;
+    float currentDepth = length(fragToLight);
+
+    // Bias untuk kasih toleransi depth fragPos ke light waktu dibandingkan.
+    // Ini ngilangin shadow acne/belang-belang
+    float bias = 0.05;
+    return (currentDepth -  bias > closestDepth) ? 1.0 : 0.0;
+}
+
+float shadowCalc(vec3 _fragPos) {
+    // Menghitung apakah titik dari light ke fragment position > depthmap.
+    vec3 fragToLight = _fragPos - u_lightSources[0].position;
+
+    // Depth dari fragPos ke light.
     float currentDepth = length(fragToLight);
     float shadow = 0.0;
 
     float bias = 0.15;
+
+    // Vector" di offsets ini digunakan utk mendapatkan value shadow dari
+    //   sekelilingnya untuk dibandingkan jadi value shadow satu titik.
+    // Value shadow semakin di tengah object semakin gelap, semakin pinggir agak memudar.
     int samples = 20;
     float viewDistance = length(cameraPos - _fragPos);
-    float diskRadius = (1.0 + (viewDistance / u_farPlane)) / 25.0;
+    float diskRadius = 0.05;
     for(int i = 0; i < samples; ++i)
     {
-        float closestDepth = texture(u_depthMapSampler, fragToLight + gridSamplingDisk[i] * diskRadius).r;
-        closestDepth *= u_farPlane;   // undo mapping [0;1]
+        float closestDepth = texture(u_depthMapSampler, fragToLight + samplingOffsets[i] * diskRadius).r;
+
+        // Ubah dari depthMap value [0,1] ke [0,farPlane]
+        closestDepth *= u_farPlane;
+
+        // Value shadow ditambah kalau sekitarnya itu juga shadow.
         if(currentDepth - bias > closestDepth)
         shadow += 1.0;
     }
+
+    // Diambil rata-rata dari total semua shadow sekeliling.
     shadow /= float(samples);
 
     return shadow;
@@ -73,9 +102,9 @@ void main() {
     vec3 specular = specularStrength * spec * lightColor;
 
     float shadow = shadowCalc(fragPos);
+
+    // Yg terdampak shadow dari diffuse dan specular/seberapa diffuse dan specular kena persentase shadownya.
     vec3 result = (ambient + (1.0 - shadow) * (diffuse + specular)) * objectColor.xyz;
 
-//    o_color = vec4(diffuseStrength, diffuseStrength, diffuseStrength, 1.0);
-//    o_color = vec4(dot(normal, lightDir), dot(normal, lightDir), dot(normal, lightDir), 1.0);
     o_color = vec4(result.xyz, 1.0);
 }

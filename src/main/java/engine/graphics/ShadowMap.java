@@ -74,25 +74,34 @@ public class ShadowMap {
 
         Vector3f lightPos = lightSources.get(0).getPosition();
 
+        // All cubemap directions.
         ArrayList<Matrix4f> shadowTransforms = new ArrayList<>(List.of(
-                new Matrix4f(shadowProj).mul(new Matrix4f().lookAt(lightPos, new Vector3f(lightPos.x + 1, lightPos.y + 0, lightPos.z + 0), new Vector3f(0, -1, 0))),
-                new Matrix4f(shadowProj).mul(new Matrix4f().lookAt(lightPos, new Vector3f(lightPos.x - 1, lightPos.y + 0, lightPos.z + 0), new Vector3f(0, -1, 0))),
-                new Matrix4f(shadowProj).mul(new Matrix4f().lookAt(lightPos, new Vector3f(lightPos.x + 0, lightPos.y + 1, lightPos.z + 0), new Vector3f(0, 0, 1))),
-                new Matrix4f(shadowProj).mul(new Matrix4f().lookAt(lightPos, new Vector3f(lightPos.x + 0, lightPos.y - 1, lightPos.z + 0), new Vector3f(0, 0, -1))),
-                new Matrix4f(shadowProj).mul(new Matrix4f().lookAt(lightPos, new Vector3f(lightPos.x + 0, lightPos.y + 0, lightPos.z + 1), new Vector3f(0, -1, 0))),
-                new Matrix4f(shadowProj).mul(new Matrix4f().lookAt(lightPos, new Vector3f(lightPos.x + 0, lightPos.y + 0, lightPos.z - 1), new Vector3f(0, -1, 0)))
+                new Matrix4f(shadowProj).mul(new Matrix4f().lookAt(
+                        lightPos,
+                        new Vector3f(lightPos.x + 1, lightPos.y + 0, lightPos.z + 0),
+                        new Vector3f(0, -1, 0))),
+                new Matrix4f(shadowProj).mul(new Matrix4f().lookAt(
+                        lightPos,
+                        new Vector3f(lightPos.x - 1, lightPos.y + 0, lightPos.z + 0),
+                        new Vector3f(0, -1, 0))),
+                new Matrix4f(shadowProj).mul(new Matrix4f().lookAt(
+                        lightPos,
+                        new Vector3f(lightPos.x + 0, lightPos.y + 1, lightPos.z + 0),
+                        new Vector3f(0, 0, 1))),
+                new Matrix4f(shadowProj).mul(new Matrix4f().lookAt(
+                        lightPos,
+                        new Vector3f(lightPos.x + 0, lightPos.y - 1, lightPos.z + 0),
+                        new Vector3f(0, 0, -1))),
+                new Matrix4f(shadowProj).mul(new Matrix4f().lookAt(
+                        lightPos,
+                        new Vector3f(lightPos.x + 0, lightPos.y + 0, lightPos.z + 1),
+                        new Vector3f(0, -1, 0))),
+                new Matrix4f(shadowProj).mul(new Matrix4f().lookAt(
+                        lightPos,
+                        new Vector3f(lightPos.x + 0, lightPos.y + 0, lightPos.z - 1),
+                        new Vector3f(0, -1, 0)))
         ));
-//
-//        std::vector<glm::mat4> shadowTransforms;
-//        shadowTransforms.push_back(shadowProj * glm::lookAt(lightPos, lightPos + glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(0.0f, -1.0f, 0.0f)));
-//        shadowTransforms.push_back(shadowProj * glm::lookAt(lightPos, lightPos + glm::vec3(-1.0f, 0.0f, 0.0f), glm::vec3(0.0f, -1.0f, 0.0f)));
-//        shadowTransforms.push_back(shadowProj * glm::lookAt(lightPos, lightPos + glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f)));
-//        shadowTransforms.push_back(shadowProj * glm::lookAt(lightPos, lightPos + glm::vec3(0.0f, -1.0f, 0.0f), glm::vec3(0.0f, 0.0f, -1.0f)));
-//        shadowTransforms.push_back(shadowProj * glm::lookAt(lightPos, lightPos + glm::vec3(0.0f, 0.0f, 1.0f), glm::vec3(0.0f, -1.0f, 0.0f)));
-//        shadowTransforms.push_back(shadowProj * glm::lookAt(lightPos, lightPos + glm::vec3(0.0f, 0.0f, -1.0f), glm::vec3(0.0f, -1.0f, 0.0f)));
 
-        // 1. render scene to depth cubemap
-        // --------------------------------
         glViewport(0, 0, SHADOW_WIDTH, SHADOW_HEIGHT);
         glBindFramebuffer(GL_FRAMEBUFFER, depthMapFbo);
         glClear(GL_DEPTH_BUFFER_BIT);

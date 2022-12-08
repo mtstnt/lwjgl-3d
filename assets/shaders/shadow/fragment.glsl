@@ -7,10 +7,7 @@ uniform float u_farPlane;
 void main()
 {
     float lightDistance = length(FragPos.xyz - u_lightPos);
-
-    // map to [0;1] range by dividing by far_plane
+    // Ubah menjadi [0,1] dari awalnya [0,farPlane].
     lightDistance = lightDistance / u_farPlane;
-
-    // write this as modified depth
     gl_FragDepth = lightDistance;
 }
